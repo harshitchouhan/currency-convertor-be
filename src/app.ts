@@ -3,14 +3,15 @@ import cors from 'cors';
 import useragent from 'express-useragent';
 import helmet from 'helmet';
 
-import { ENABLE_ENCRYPTION, NON_ENCRYPTION_ENDPOINTS, PATH, SERVER_IPS, StatusCode } from './config';
+import { NON_ENCRYPTION_ENDPOINTS, SERVER_IPS, StatusCode } from './config';
 import { ApiError, BadRequestError, CorsError, InternalError, NotFoundError } from './core/ApiError';
 
 import Controller from './interfaces/controller.interface';
 import { EncryptionAndDecryption } from './core/Encryption&Decryption';
 import { DB_ENVIRONMENT } from './database/database.config';
-import moment from 'moment';
 import { CacheMiddleware } from './middlewares/cache.middleware';
+
+const { ENABLE_ENCRYPTION, BASE_PATH } = process.env;
 
 class App {
   public app: express.Application;
@@ -59,7 +60,7 @@ class App {
     this.app.use(useragent.express());
 
     this.app.use((req, res, next) => {
-      if (ENABLE_ENCRYPTION === true && req.method === "POST" && !NON_ENCRYPTION_ENDPOINTS.includes(req.url) && !req.headers['content-type']?.includes('multipart/form-data')) {
+      if (ENABLE_ENCRYPTION === 'true' && req.method === 'POST' && !NON_ENCRYPTION_ENDPOINTS.includes(req.url) && !req.headers['content-type']?.includes('multipart/form-data')) {
         const result = EncryptionAndDecryption.decryption(req.body.data);
         if (result === StatusCode.INVALID_ENCRYPTED_INPUT) {
           return ApiError.handle(new BadRequestError('Invalid Encrpted String'), res);
@@ -73,7 +74,8 @@ class App {
 
   private initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
-      this.app.use(PATH, controller.router);
+      // @ts-ignore
+      this.app.use(BASE_PATH, controller.router);
     });
   }
 

@@ -1,7 +1,7 @@
 // @ts-ignore
 import redis from 'redis';
 
-import { REDIS_KEY_EXPIRY_TIME } from '../config';
+const { REDIS_KEY_EXPIRY_TIME } = process.env;
 
 export class CacheMiddleware {
   static client: any;

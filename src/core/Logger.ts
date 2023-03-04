@@ -5,9 +5,8 @@ import moment from 'moment';
 
 import { Database } from './../database/database';
 import { EncryptionAndDecryption } from './Encryption&Decryption';
-import { ENABLE_ENCRYPTION } from '../config';
-import { ApiError, InternalError } from './ApiError';
 
+const { ENABLE_ENCRYPTION } = process.env;
 export class Logger extends Database {
   constructor(private response: express.Response, private request: express.Request, private statusCode: string, private status: number, private clientResponse: any) {
     super();
@@ -30,7 +29,7 @@ export class Logger extends Database {
 
     if (this.status.toString().startsWith('2')) {
       let clientResponseClone = JSON.parse(JSON.stringify(this.clientResponse));
-      if (this.clientResponse.hasOwnProperty('data') && ENABLE_ENCRYPTION) {
+      if (this.clientResponse.hasOwnProperty('data') && ENABLE_ENCRYPTION === 'true') {
         clientResponseClone.data = EncryptionAndDecryption.decryption(clientResponseClone.data);
       }
 

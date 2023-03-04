@@ -1,6 +1,5 @@
 import CryptoJS from 'crypto-js';
-import { StatusCode, SALT_ROUNDS } from '../config';
-import bcrypt from 'bcryptjs';
+import { StatusCode } from '../config';
 
 const { ENCRYPTION_SECRET_KEY } = process.env;
 
@@ -18,31 +17,5 @@ export class EncryptionAndDecryption {
     } catch (err) {
       return StatusCode.INVALID_ENCRYPTED_INPUT;
     }
-  }
-
-  public static saltEncryption(data: any) {
-    return new Promise((resolve, reject) => {
-      bcrypt
-        .hash(data, SALT_ROUNDS)
-        .then((result) => {
-          resolve(result);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
-  }
-
-  public static saltCompare(data: any, hash: any): any {
-    return new Promise((resolve, reject) => {
-      bcrypt
-        .compare(data, hash)
-        .then((result) => {
-          resolve(result);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
   }
 }

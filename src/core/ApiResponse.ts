@@ -1,8 +1,10 @@
 import { Response } from 'express';
-import { ENABLE_ENCRYPTION, ResponseStatus, StatusCode } from '../config';
-import { CacheMiddleware } from '../middlewares/cache.middleware';
+
+import { ResponseStatus, StatusCode } from '../config';
 import { EncryptionAndDecryption } from './Encryption&Decryption';
 import { Logger } from './Logger';
+
+const { ENABLE_ENCRYPTION } = process.env;
 
 abstract class ApiResponse {
   constructor(protected statusCode: StatusCode, protected status: ResponseStatus, protected message: string) {}
@@ -27,7 +29,7 @@ abstract class ApiResponse {
     delete clone.status;
     for (const i in clone) if (typeof clone[i] === 'undefined') delete clone[i];
     // @ts-ignore
-    if (ENABLE_ENCRYPTION === true && clone['data'] && !clone['data']['token'] && url !== '/security/encryption' && url !== '/security/decryption' && url !== '/security/saltencryption') {
+    if (ENABLE_ENCRYPTION === "true" && clone['data'] && !clone['data']['token'] && url !== '/security/encryption' && url !== '/security/decryption') {
       // @ts-ignore
       clone['data'] = EncryptionAndDecryption.encryption(clone['data']);
     }

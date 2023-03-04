@@ -1,9 +1,4 @@
-export const ENABLE_ENCRYPTION: boolean = false;
-export const PORT = 4200;
-export const REDIS_PORT = 6379;
-export const REDIS_KEY_EXPIRY_TIME = 3600 * 24 * 1; // 1 day
-export const PATH = '/curreny-conversion/api/v1';
-export const SALT_ROUNDS = 10;
+const { PORT, PATH } = process.env;
 
 export const REGEX = {
   PAN: /[A-Z]{3}[P]{1}[A-Z]{1}[0-9]{4}[A-Z]{1}/,
@@ -32,22 +27,20 @@ export const SERVER_IPS = {
   LOCAL: [`http://localhost:${PORT}`, `localhost:${PORT}`],
   DEV: [],
   SIT: [],
-  UAT: [],
+  UAT: ['65.2.78.173:4200'],
   PROD: [],
 };
 
 export enum nonTokenAPIs {
-  '/security/saltencryption',
   '/security/encryption',
   '/security/decryption',
 }
 
 export enum cachingAPIs {
-  '/security/saltencryption',
   '/currency/rates',
 }
 
-export const NON_ENCRYPTION_ENDPOINTS = [`${PATH}/security/encryption`, `${PATH}/security/decryption`, `${PATH}/security/saltencryption`];
+export const NON_ENCRYPTION_ENDPOINTS = [`${PATH}/security/encryption`, `${PATH}/security/decryption`];
 
 export const OPEN_EXCHANGE_RATES_CONFIGS = {
   DEV: {
