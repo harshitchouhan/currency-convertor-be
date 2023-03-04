@@ -1,13 +1,9 @@
-export const ENABLE_ENCRYPTION: boolean = true;
+export const ENABLE_ENCRYPTION: boolean = false;
 export const PORT = 4200;
 export const REDIS_PORT = 6379;
 export const REDIS_KEY_EXPIRY_TIME = 3600 * 24 * 1; // 1 day
 export const PATH = '/curreny-conversion/api/v1';
 export const SALT_ROUNDS = 10;
-export const AMC_KEY = 'AMC_TOKEN';
-export const BYPASS_TOKEN = 'bYP@$$T0k#N@TEST';
-export const USER_NAME = 'U2FsdGVkX19BWF3rAcTEBAqCmu7N6K/LHZAeHxNVerz84MLXCZHmgkvLublBu7N6';
-export const PASSWORD = 'U2FsdGVkX1/D0h+FH7I67/pVnj3KiiWjQTyuj7jRTmA=';
 
 export const REGEX = {
   PAN: /[A-Z]{3}[P]{1}[A-Z]{1}[0-9]{4}[A-Z]{1}/,
