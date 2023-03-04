@@ -7,7 +7,7 @@ export const DB_CONFIGS: any = {
     POSTGRESS: {
       'currency-convertor-db': {
         user: EncryptionAndDecryption.decryption('U2FsdGVkX19rqxKPjN1jrtUK8cjdnBr2TRjRCkN/DE4='),
-        host: EncryptionAndDecryption.decryption('U2FsdGVkX1+6XvZ8GXugmQsABZ5SrVkXXP0jS+u80kg='),
+        host: 'localhost',
         database: EncryptionAndDecryption.decryption('U2FsdGVkX1+otnCctZemJqelGMdb81AuoiGY5J982j60sU/9sCr/ohYfHud2CCkg'),
         password: EncryptionAndDecryption.decryption('U2FsdGVkX19fZ5rZMWeeS9oaJX0ROpDhy9NkUHJxPNM='),
         port: EncryptionAndDecryption.decryption('U2FsdGVkX1+TbsnBdYUSSQHMZCkKRMUXyB/3wRX7c8o='),
@@ -19,7 +19,7 @@ export const DB_CONFIGS: any = {
     POSTGRESS: {
       'currency-convertor-db': {
         user: EncryptionAndDecryption.decryption('U2FsdGVkX19rqxKPjN1jrtUK8cjdnBr2TRjRCkN/DE4='),
-        host: EncryptionAndDecryption.decryption('U2FsdGVkX1+6XvZ8GXugmQsABZ5SrVkXXP0jS+u80kg='),
+        host: 'localhost',
         database: EncryptionAndDecryption.decryption('U2FsdGVkX1+otnCctZemJqelGMdb81AuoiGY5J982j60sU/9sCr/ohYfHud2CCkg'),
         password: EncryptionAndDecryption.decryption('U2FsdGVkX19fZ5rZMWeeS9oaJX0ROpDhy9NkUHJxPNM='),
         port: EncryptionAndDecryption.decryption('U2FsdGVkX1+TbsnBdYUSSQHMZCkKRMUXyB/3wRX7c8o='),
@@ -30,7 +30,7 @@ export const DB_CONFIGS: any = {
     POSTGRESS: {
       'currency-convertor-db': {
         user: EncryptionAndDecryption.decryption('U2FsdGVkX19rqxKPjN1jrtUK8cjdnBr2TRjRCkN/DE4='),
-        host: EncryptionAndDecryption.decryption('U2FsdGVkX1+6XvZ8GXugmQsABZ5SrVkXXP0jS+u80kg='),
+        host: 'localhost',
         database: EncryptionAndDecryption.decryption('U2FsdGVkX1+otnCctZemJqelGMdb81AuoiGY5J982j60sU/9sCr/ohYfHud2CCkg'),
         password: EncryptionAndDecryption.decryption('U2FsdGVkX19fZ5rZMWeeS9oaJX0ROpDhy9NkUHJxPNM='),
         port: +EncryptionAndDecryption.decryption('U2FsdGVkX1+TbsnBdYUSSQHMZCkKRMUXyB/3wRX7c8o='),
